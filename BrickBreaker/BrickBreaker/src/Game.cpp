@@ -41,10 +41,10 @@ void Game::Init()
 	ResourceManager::LoadTexture("BrickBreaker/res/Textures/block_solid.png", false, "block_solid");
 	ResourceManager::LoadTexture("BrickBreaker/res/Textures/paddle.png", true, "paddle");
 	// Load levels
-	GameLevel one; one.Load("BrickBreaker/res/levels/one.lvl", this->Width, this->Height / 2);
-	GameLevel two; two.Load("BrickBreaker/res/levels/two.lvl", this->Width, this->Height / 2);
-	GameLevel three; three.Load("BrickBreaker/res/levels/three.lvl", this->Width, this->Height / 2);
-	GameLevel four; four.Load("BrickBreaker/res/levels/four.lvl", this->Width, this->Height / 2);
+	GameLevel one; one.Load("BrickBreaker/res/Levels/one.lvl", this->Width, this->Height / 2);
+	GameLevel two; two.Load("BrickBreaker/res/Levels/two.lvl", this->Width, this->Height / 2);
+	GameLevel three; three.Load("BrickBreaker/res/Levels/three.lvl", this->Width, this->Height / 2);
+	GameLevel four; four.Load("BrickBreaker/res/Levels/four.lvl", this->Width, this->Height / 2);
 	this->Levels.push_back(one);
 	this->Levels.push_back(two);
 	this->Levels.push_back(three);
@@ -117,13 +117,13 @@ void Game::Render()
 void Game::ResetLevel()
 {
 	if (this->Level == 0)
-		this->Levels[0].Load("levels/one.lvl", this->Width, this->Height / 2);
+		this->Levels[0].Load("BrickBreaker/res/Levels/one.lvl", this->Width, this->Height / 2);
 	else if (this->Level == 1)
-		this->Levels[1].Load("levels/two.lvl", this->Width, this->Height / 2);
+		this->Levels[1].Load("BrickBreaker/res/Levels/two.lvl", this->Width, this->Height / 2);
 	else if (this->Level == 2)
-		this->Levels[2].Load("levels/three.lvl", this->Width, this->Height / 2);
+		this->Levels[2].Load("BrickBreaker/res/Levels/three.lvl", this->Width, this->Height / 2);
 	else if (this->Level == 3)
-		this->Levels[3].Load("levels/four.lvl", this->Width, this->Height / 2);
+		this->Levels[3].Load("BrickBreaker/res/Levels/four.lvl", this->Width, this->Height / 2);
 }
 
 void Game::ResetPlayer()
