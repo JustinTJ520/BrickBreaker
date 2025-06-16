@@ -45,6 +45,9 @@
     <ClCompile Include="BrickBreaker\src\BallObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BrickBreaker\src\ParticleGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BrickBreaker\src\Game.h">
@@ -71,6 +74,9 @@
     <ClInclude Include="BrickBreaker\src\BallObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BrickBreaker\src\ParticleGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="BrickBreaker\res\Shaders\Sprite.frag" />
@@ -79,5 +85,7 @@
     <None Include="BrickBreaker\res\Levels\one.lvl" />
     <None Include="BrickBreaker\res\Levels\three.lvl" />
     <None Include="BrickBreaker\res\Levels\two.lvl" />
+    <None Include="BrickBreaker\res\Shaders\Particle.frag" />
+    <None Include="BrickBreaker\res\Shaders\Particle.vs" />
   </ItemGroup>
 </Project>

@@ -3,12 +3,13 @@
 #include "SpriteRenderer.h"
 #include "GameObject.h"
 #include "BallObject.h"
+#include "ParticleGenerator.h"
 
 // Game-related save data
 SpriteRenderer *Renderer;
 GameObject *Player;
-
 BallObject* Ball;
+ParticleGenerator* Particles;
 
 Game::Game(unsigned int width, unsigned int height)
 	: State(GAME_ACTIVE), Keys(), Width(width), Height(height)
@@ -19,27 +20,35 @@ Game::Game(unsigned int width, unsigned int height)
 Game::~Game()
 {
 	delete Renderer;
+	delete Player;
+	delete Ball;
+	delete Particles;
 }
 
 void Game::Init()
 {
 	// Load shaders
 	ResourceManager::LoadShader("BrickBreaker/res/Shaders/Sprite.vs", "BrickBreaker/res/Shaders/Sprite.frag", nullptr, "sprite");
+	ResourceManager::LoadShader("BrickBreaker/res/Shaders/Particle.vs", "BrickBreaker/res/Shaders/Particle.frag", nullptr, "particle");
 	// Configure shaders
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
 		static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
 	ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-	// Set render specific controls
-	Shader myShader;
-	myShader = ResourceManager::GetShader("sprite");
-	Renderer = new SpriteRenderer(myShader);
+	ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
+	ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
 	// Load textures
 	ResourceManager::LoadTexture("BrickBreaker/res/Textures/background.jpg", false, "background");
 	ResourceManager::LoadTexture("BrickBreaker/res/Textures/awesomeface.png", true, "face");
 	ResourceManager::LoadTexture("BrickBreaker/res/Textures/block.png", false, "block");
 	ResourceManager::LoadTexture("BrickBreaker/res/Textures/block_solid.png", false, "block_solid");
 	ResourceManager::LoadTexture("BrickBreaker/res/Textures/paddle.png", true, "paddle");
+	ResourceManager::LoadTexture("BrickBreaker/res/Textures/particle.png", true, "particle");
+	// Set render specific controls
+	Shader myShader;
+	myShader = ResourceManager::GetShader("sprite");
+	Renderer = new SpriteRenderer(myShader);
+	Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
 	// Load levels
 	GameLevel one; one.Load("BrickBreaker/res/Levels/one.lvl", this->Width, this->Height / 2);
 	GameLevel two; two.Load("BrickBreaker/res/Levels/two.lvl", this->Width, this->Height / 2);
@@ -92,6 +101,9 @@ void Game::Update(float dt)
 	// Check for collisions
 	this->DoCollisions();
 
+	// Update particles
+	Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+
 	if (Ball->Position.y >= this->Height) // Did ball reach bottom edge?
 	{
 		this->ResetLevel();
@@ -109,6 +121,8 @@ void Game::Render()
 		this->Levels[this->Level].Draw(*Renderer);
 		// Draw player
 		Player->Draw(*Renderer);
+		// Draw particles
+		Particles->Draw();
 		// Draw ball
 		Ball->Draw(*Renderer);
 	}

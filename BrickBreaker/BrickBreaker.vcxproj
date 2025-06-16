@@ -144,6 +144,7 @@
     <ClCompile Include="BrickBreaker\src\Game.cpp" />
     <ClCompile Include="BrickBreaker\src\GameLevel.cpp" />
     <ClCompile Include="BrickBreaker\src\GameObject.cpp" />
+    <ClCompile Include="BrickBreaker\src\ParticleGenerator.cpp" />
     <ClCompile Include="BrickBreaker\src\Resource_Manager.cpp" />
     <ClCompile Include="BrickBreaker\src\Shader.cpp" />
     <ClCompile Include="BrickBreaker\src\SpriteRenderer.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="BrickBreaker\src\Game.h" />
     <ClInclude Include="BrickBreaker\src\GameLevel.h" />
     <ClInclude Include="BrickBreaker\src\GameObject.h" />
+    <ClInclude Include="BrickBreaker\src\ParticleGenerator.h" />
     <ClInclude Include="BrickBreaker\src\Resource_Manager.h" />
     <ClInclude Include="BrickBreaker\src\Shader.h" />
     <ClInclude Include="BrickBreaker\src\SpriteRenderer.h" />
@@ -165,6 +167,8 @@
     <None Include="BrickBreaker\res\Levels\one.lvl" />
     <None Include="BrickBreaker\res\Levels\three.lvl" />
     <None Include="BrickBreaker\res\Levels\two.lvl" />
+    <None Include="BrickBreaker\res\Shaders\Particle.frag" />
+    <None Include="BrickBreaker\res\Shaders\Particle.vs" />
     <None Include="BrickBreaker\res\Shaders\Sprite.frag" />
     <None Include="BrickBreaker\res\Shaders\Sprite.vs" />
   </ItemGroup>
