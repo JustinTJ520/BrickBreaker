@@ -76,7 +76,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)BrickBreaker\Dependencies\STB\include;$(SolutionDir)BrickBreaker\Dependencies\GLM\include;$(SolutionDir)BrickBreaker\Dependencies\GLAD\include;$(SolutionDir)BrickBreaker\Dependencies\GLFW\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)BrickBreaker\Dependencies\STB\include;$(SolutionDir)BrickBreaker\Dependencies\GLM\include;$(SolutionDir)BrickBreaker\Dependencies\GLAD\include;$(SolutionDir)BrickBreaker\Dependencies\GLFW\Include;F:\Coding\Projects\BrickBreaker\BrickBreaker\Dependencies\imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +94,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)BrickBreaker\Dependencies\STB\include;$(SolutionDir)BrickBreaker\Dependencies\GLM\include;$(SolutionDir)BrickBreaker\Dependencies\GLAD\include;$(SolutionDir)BrickBreaker\Dependencies\GLFW\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)BrickBreaker\Dependencies\STB\include;$(SolutionDir)BrickBreaker\Dependencies\GLM\include;$(SolutionDir)BrickBreaker\Dependencies\GLAD\include;$(SolutionDir)BrickBreaker\Dependencies\GLFW\Include;F:\Coding\Projects\BrickBreaker\BrickBreaker\Dependencies\imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,7 +112,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)BrickBreaker\Dependencies\STB\include;$(SolutionDir)BrickBreaker\Dependencies\GLM\include;$(SolutionDir)BrickBreaker\Dependencies\GLAD\include;$(SolutionDir)BrickBreaker\Dependencies\GLFW\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)BrickBreaker\Dependencies\STB\include;$(SolutionDir)BrickBreaker\Dependencies\GLM\include;$(SolutionDir)BrickBreaker\Dependencies\GLAD\include;$(SolutionDir)BrickBreaker\Dependencies\GLFW\Include;F:\Coding\Projects\BrickBreaker\BrickBreaker\Dependencies\imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +130,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)BrickBreaker\Dependencies\STB\include;$(SolutionDir)BrickBreaker\Dependencies\GLM\include;$(SolutionDir)BrickBreaker\Dependencies\GLAD\include;$(SolutionDir)BrickBreaker\Dependencies\GLFW\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)BrickBreaker\Dependencies\STB\include;$(SolutionDir)BrickBreaker\Dependencies\GLM\include;$(SolutionDir)BrickBreaker\Dependencies\GLAD\include;$(SolutionDir)BrickBreaker\Dependencies\GLFW\Include;F:\Coding\Projects\BrickBreaker\BrickBreaker\Dependencies\imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,6 +154,13 @@
     <ClCompile Include="BrickBreaker\src\SpriteRenderer.cpp" />
     <ClCompile Include="BrickBreaker\src\Texture.cpp" />
     <ClCompile Include="Dependencies\GLAD\src\glad.c" />
+    <ClCompile Include="Dependencies\imgui\imgui.cpp" />
+    <ClCompile Include="Dependencies\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Dependencies\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Dependencies\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Dependencies\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Dependencies\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Dependencies\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BrickBreaker\src\BallObject.h" />
@@ -161,6 +172,15 @@
     <ClInclude Include="BrickBreaker\src\Shader.h" />
     <ClInclude Include="BrickBreaker\src\SpriteRenderer.h" />
     <ClInclude Include="BrickBreaker\src\Texture.h" />
+    <ClInclude Include="Dependencies\imgui\imconfig.h" />
+    <ClInclude Include="Dependencies\imgui\imgui.h" />
+    <ClInclude Include="Dependencies\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="Dependencies\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="Dependencies\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Dependencies\imgui\imgui_internal.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_textedit.h" />
+    <ClInclude Include="Dependencies\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BrickBreaker\res\Levels\four.lvl" />

@@ -5,6 +5,9 @@
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <imgui.h>
+#include <imgui_impl_opengl3.h>
+#include <imgui_impl_glfw.h>
 
 // GLFW declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -48,8 +51,19 @@ int main(int argc, char* argv[])
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+	ImGui::StyleColorsDark();
+
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init("#version 330");
+
 	// Initialize game
 	Breakout.Init();
+
+	Breakout.State = GAME_PAUSE;
 
 	// DeltaTime variables
 	float deltaTime = 0.0f;
@@ -74,11 +88,70 @@ int main(int argc, char* argv[])
 		glClear(GL_COLOR_BUFFER_BIT);
 		Breakout.Render();
 
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
+		static int selectedLevel = 0;
+
+		if (Breakout.State == GAME_PAUSE)
+		{
+			ImGui::Begin("Pause Menu");
+
+			ImGui::Text("Controls:\nA = Move Left\nD = Move Right\nSpace = Pause or Start Game\nESC = Quit Game\n");
+
+			ImGui::Text("Currently Playing Level %d\n", Breakout.Level + 1);
+
+			ImGui::Text("Select your level:");
+
+			if (ImGui::Button("Level 1"))
+			{
+				selectedLevel = 0;
+				Breakout.Level = selectedLevel;
+				Breakout.ResetLevel();
+				Breakout.ResetPlayer();
+			}
+
+			if (ImGui::Button("Level 2"))
+			{
+				selectedLevel = 1;
+				Breakout.Level = selectedLevel;
+				Breakout.ResetLevel();
+				Breakout.ResetPlayer();
+			}
+
+			if (ImGui::Button("Level 3"))
+			{
+				selectedLevel = 2;
+				Breakout.Level = selectedLevel;
+				Breakout.ResetLevel();
+				Breakout.ResetPlayer();
+			}
+
+			if (ImGui::Button("Level 4"))
+			{
+				selectedLevel = 3;
+				Breakout.Level = selectedLevel;
+				Breakout.ResetLevel();
+				Breakout.ResetPlayer();
+			}
+
+			ImGui::End();
+		}
+
+		ImGui::Render();
+
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 		glfwSwapBuffers(window);
 	}
 
 	// Delete all resources as loaded using the resource manager
 	ResourceManager::Clear();
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	glfwTerminate();
 	return 0;
@@ -95,6 +168,12 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 			Breakout.Keys[key] = true;
 		else if (action == GLFW_RELEASE)
 			Breakout.Keys[key] = false;
+	}
+	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+	{
+		if (Breakout.State == GAME_ACTIVE)
+			Breakout.State = GAME_PAUSE;
+		else Breakout.State = GAME_ACTIVE;
 	}
 }
 

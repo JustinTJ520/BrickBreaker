@@ -97,6 +97,8 @@ void Game::ProcessInput(float dt)
 
 void Game::Update(float dt)
 {
+	if (this->State != GAME_ACTIVE) return;
+
 	Ball->Move(dt, this->Width);
 	// Check for collisions
 	this->DoCollisions();
@@ -113,19 +115,16 @@ void Game::Update(float dt)
 
 void Game::Render()
 {
-	if (this->State == GAME_ACTIVE)
-	{
-		// Draw background
-		Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
-		// Draw level
-		this->Levels[this->Level].Draw(*Renderer);
-		// Draw player
-		Player->Draw(*Renderer);
-		// Draw particles
-		Particles->Draw();
-		// Draw ball
-		Ball->Draw(*Renderer);
-	}
+	// Draw background
+	Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
+	// Draw level
+	this->Levels[this->Level].Draw(*Renderer);
+	// Draw player
+	Player->Draw(*Renderer);
+	// Draw particles
+	Particles->Draw();
+	// Draw ball
+	Ball->Draw(*Renderer);
 }
 
 void Game::ResetLevel()
